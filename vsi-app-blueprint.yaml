@@ -1,0 +1,94 @@
+name: "bp-vsi-app-3"
+schema_version: "1.0.0"
+description: "Basic 2 component blueprint, RG & COS, no API key"
+inputs:
+  - name: region
+  - name: resource_group_name
+  - name: provision_rg
+  - name: cos_instance_name
+  - name: logdna_name
+  - name: vsi_name
+  - name: api_key
+  - name: ssh_public_key
+outputs:
+  - name: schematics-app-url
+    value: $module.bp-vsi-vpc-app.outputs.app_url
+settings:
+  - name: TF_VERSION
+    value: 1.0
+modules:
+  - name: bp-vsi-resource-group
+    layer: RG
+    source:
+      git: 
+        source_type: github
+        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/master/IBM-ResourceGroup"
+        git_branch: master
+    inputs:
+      - name: provision
+        value: $blueprint.provision_rg
+      - name: name
+        value: $blueprint.resource_group_name
+    outputs:
+      - name: resource_group_name
+      - name: resource_group_id
+  - name: bp-vsi-cos-storage
+    layer: DB
+    source:
+      git:
+        source_type: github
+        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/master/IBM-Storage"
+        git_branch: master
+    inputs:
+      - name: cos_instance_name
+        value: $blueprint.cos_instance_name
+      - name: cos_single_site_loc
+        value: "ams03"
+      - name: resource_group_id
+        value: $workitem.bp-vsi-resource-group.outputs.resource_group_id
+    outputs:
+      - name: cos_id
+      - name: cos_crn
+  - name: bp-vsi-observablity
+    layer: OBS
+    source:
+      git:
+        source_type: github
+        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/master/IBM-Observability"
+        git_branch: master
+    inputs:
+      - name: logdna_name
+        value: $blueprint.logdna_name
+      - name: logdna_region
+        value: $blueprint.region
+      - name: ic_api_key
+        value: $blueprint.api_key
+      - name: resource_group_id
+        value: $workitem.bp-vsi-resource-group.outputs.resource_group_id
+    outputs:
+      - name: logdna_crn
+      - name: logdna_id
+  - name: bp-vsi-vpc-app
+    layer: Application
+    source:
+      git:
+        source_type: github
+        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/master/IBM-VPC-App"
+        git_branch: master
+    inputs:
+      - name: unique_id
+        value: $blueprint.vsi_name
+      - name: ibmcloud_api_key
+        value: $blueprint.api_key
+        secure: true
+      - name: vpc_region
+        value: $blueprint.region
+      - name: resource_group_id
+        value: $workitem.bp-vsi-resource-group.outputs.resource_group_id
+      - name: ssh_public_key
+        value: $blueprint.ssh_public_key
+        secure: true
+    outputs:
+      - name: app_url
+
+

@@ -1,0 +1,33 @@
+#########################################################################################################
+# Blueprint config file for environment vsi-app-env.us
+#
+# Only string input values are supported with this example
+#
+# Sensitive input values are not defined in the config file as this potentially could lead to a security
+# exposure when the config file is saved in the git repo. To pass sensitive values to Schematics, they are specified as
+# environment variables when the environment is defined using the `ibcmcloud schematics environment create` command.
+# To specify sensitive values, the input key is defined in the config file, but with a null value. This will cause
+# the Schematics CLI to look for an env-var with the key name prefixed with `SCHEMATICS_ENV_`.
+# The environment variable name is constructed by prefixing the config input key with `SCHEMATICS_ENV_` to create the full name.
+# Export the config values as environment variables:
+#
+# export SCHEMATICS_ENV_api_key='xxxxxxxxxxxxxxxxx'
+# export SCHEMATICS_ENV_ssh_public_key='rsa yyyyyyyyyyy'
+#
+#########################################################################################################
+
+# Common inputs
+region: us-east
+
+# Account inputs
+resource_group_name: blueprint-vsi-us
+provision_rg: true
+
+# Observability inputs
+logdna_name: vsi-app-logdna-us
+
+# Application inputs
+vsi_name: bp-vsi-app-us
+cos_instance_name: vsi-app-cos-us
+api_key:
+ssh_public_key:

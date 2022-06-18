@@ -1,0 +1,40 @@
+{
+    "name": "Blueprint VSI App",
+    "schema_version": "1.0.0",
+    "source": {
+        "source_type": "git_hub",
+        "git": {
+            "git_repo_url": "https://github.ibm.com/schematics-solution/blueprint-vsi-app-example",
+            "git_repo_folder": "vsi-app-blueprint.yaml",
+            "git_branch": "master"
+        }
+    },
+    "config": [
+        {
+            "source": {
+                "source_type": "git_hub",
+                "git": {
+                    "git_repo_url": "https://github.ibm.com/schematics-solution/blueprint-vsi-app-example",
+                    "git_repo_folder": "vsi-app-input.yaml",
+                    "git_branch": "master"
+                }
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "name": "provision_rg",
+            "value": "true"
+        },
+        {
+            "name": "resource_group_name",
+            "value": "my-vsi-rg1"
+        },
+        {
+            "name": "ssh_public_key",
+            "value": "ssh-xxxxxx"
+        }
+    ],
+    "description": "Deploys a simple via app blueprint",
+    "resource_group": "Default"
+}
