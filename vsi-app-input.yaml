@@ -29,5 +29,4 @@ logdna_name: vsi-app-logdna-us
 # Application inputs
 vsi_name: bp-vsi-app-us
 cos_instance_name: vsi-app-cos-us
-api_key:
 ssh_public_key:

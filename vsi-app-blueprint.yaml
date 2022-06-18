@@ -8,7 +8,6 @@ inputs:
   - name: cos_instance_name
   - name: logdna_name
   - name: vsi_name
-  - name: api_key
   - name: ssh_public_key
 outputs:
   - name: schematics-app-url
