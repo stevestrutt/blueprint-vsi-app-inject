@@ -1,8 +1,8 @@
-# Blueprints example to demonstrate 
+# Blueprint multi-module application stack example
 
-The blueprint demonstrates deploying a full application stack composed from four Terraform configs
+This blueprint demonstrates how infrastructure environments can be composed and scaled by linking Terraform configs. In this example four Terraform configs are linked to deploy a working Nginix application stack on VSIs within a VPC. After deployment the Nginix website can be accessed via the application URL returned by Schematics.   
 
-Following resources are deployed:
+The following resources are created:
 - Resource Group
 - COS instance and bucket
 - LogDNA
@@ -36,22 +36,21 @@ The blueprint demonstrates deploying a full application stack composed from 4 mo
 
 
 ### Blueprint definition inputs 
-The vsi-app-blueprint.yaml definition file accepts the following inputs:
+The vsi-app-blueprint.yaml definition accepts the following inputs:
 
 
 | Name | Type | Value | Description |
 |------|------|------|----------------|
-| region | string | us-east | Resource deployment region |
-| resource_group_name | string | blueprint-rg-us | Resource group to create |
-| provision_rg | string | true | Create RG - true. Use existing RG - false |
-| cos_instance_name | string | vsi-app-cos-us | Name for COS instance |
-| logdna_name | string | vsi-app-logdna-us | Name of LogDNA instance |
-| vsi_name | string | bp-vsi-app-us | Name of VSIs |
-| api_key | string | sensitive | User APIKey entered as env-var |
+| region | string | null | Resource deployment region |
+| resource_group_name | string | null | Resource group to create |
+| provision_rg | string | null | Create RG - true. Use existing RG - false |
+| cos_instance_name | string | null | Name for COS instance |
+| logdna_name | string | null | Name of LogDNA instance |
+| vsi_name | string | null | Name of VSIs |
 | ssh_public_key | string | sensitive | User SSH public key entered as env-var. The SSH key is not used, but a valid key must be specified to create the VSI |  
 
 ## Blueprints Outputs
-The complex-blueprint.yaml definition creates the following outputs:
+The vsi-app-blueprint.yaml definition creates the following outputs:
 
 | Name | Type | Value | Description |
 |------|------|------|----------------|
@@ -71,25 +70,14 @@ The input file defines the variable values for all the required Blueprint defini
 | ssh_public_key: | string | null  | SSH Key  |
 
 
-Sensitive input values like API keys and SSH keys are not defined in the input file as this potentially could lead to a security exposure when the  file is saved in the git repo. To pass sensitive values to Schematics, they are specified as environment variables when the environment is defined using the `ibcmcloud schematics environment create` command. To specify sensitive values, the input key is defined in the config file, but with a null value. This will cause the Schematics CLI to look for an env-var with the key name prefixed with `SCHEMATICS_ENV_`. 
+Sensitive input values like API keys and SSH keys should not be defined in the input file as this potentially could lead to a security exposure when the  file is saved in the git repo. To pass sensitive values to Schematics, they are passed as input variables when the Blueprint is created. To specify sensitive values, the name key is defined in the input file, but with a null value. 
 
-The environment variable name is constructed by prefixing the config input key with `SCHEMATICS_ENV_` to create the full name.  
-
-- api_key becomes SCHEMATICS_ENV_api_key
-- ssh_public_key becomes SCHEMATICS_ENV_ssh_public_key
-
-Export the config values as environment variables:
-```
-export SCHEMATICS_ENV_api_key='xxxxxxxxxxxxxxxxx'
-export SCHEMATICS_ENV_ssh_public_key='rsa yyyyyyyyyyy'
-```
 
 The SSH key can be sourced using:
 ```
-export SCHEMATICS_ENV_ssh_public_key=`cat ~/.ssh/id_rsa.pub`
+cat ~/.ssh/id_rsa.pub
 ```
 
-Use an existing API Key or generate a new one at https://cloud.ibm.com/iam/apikeys
 
 
 ## Prerequisites
@@ -120,8 +108,8 @@ CLI flag support due 27th June 2022
 $ ibmcloud schematics blueprint create 
 -name=VSI-APP
 -resource_group=Default
--bp_git_url https://github.ibm.com/schematics-solution/blueprint-example-modules/vsi-app-blueprint.yaml
--input_git_url https://github.ibm.com/schematics-solution/blueprint-example-modules/vsi-app-input.yaml
+-bp_git_url https://github.com/Cloud-Schematics/blueprint-vis-app-example/vsi-app-blueprint.yaml
+-input_git_url https://github.com/Cloud-Schematics/blueprint-vis-app-example/vsi-app-input.yaml
 ```
 
 ```
