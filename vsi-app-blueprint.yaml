@@ -21,8 +21,8 @@ modules:
     source:
       git: 
         source_type: github
-        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/master/IBM-ResourceGroup"
-        git_branch: master
+        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-ResourceGroup"
+        git_branch: main
     inputs:
       - name: provision
         value: $blueprint.provision_rg
@@ -36,8 +36,8 @@ modules:
     source:
       git:
         source_type: github
-        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/master/IBM-Storage"
-        git_branch: master
+        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-Storage"
+        git_branch: main
     inputs:
       - name: cos_instance_name
         value: $blueprint.cos_instance_name
@@ -53,8 +53,8 @@ modules:
     source:
       git:
         source_type: github
-        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/master/IBM-Observability"
-        git_branch: master
+        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-Observability"
+        git_branch: main
     inputs:
       - name: logdna_name
         value: $blueprint.logdna_name
@@ -72,8 +72,8 @@ modules:
     source:
       git:
         source_type: github
-        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/master/IBM-VPC-App"
-        git_branch: master
+        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-VPC-App"
+        git_branch: main
     inputs:
       - name: unique_id
         value: $blueprint.vsi_name

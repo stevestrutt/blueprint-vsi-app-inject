@@ -6,7 +6,7 @@
         "git": {
             "git_repo_url": "https://github.com/Cloud-Schematics/blueprint-vsi-app-example",
             "git_repo_folder": "vsi-app-blueprint.yaml",
-            "git_branch": "master"
+            "git_branch": "main"
         }
     },
     "config": [
@@ -16,7 +16,7 @@
                 "git": {
                     "git_repo_url": "https://github.com/Cloud-Schematics/blueprint-vsi-app-example",
                     "git_repo_folder": "vsi-app-input.yaml",
-                    "git_branch": "master"
+                    "git_branch": "main"
                 }
             }
         }
@@ -35,6 +35,6 @@
             "value": "ssh-xxxxxx"
         }
     ],
-    "description": "Deploys a simple via app blueprint",
+    "description": "Deploys a simple vsi app blueprint",
     "resource_group": "Default"
 }
