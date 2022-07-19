@@ -57,7 +57,7 @@ The vsi-app-blueprint.yaml definition creates the following outputs:
 | schematics-app-url | string |  | URL of sample NGINX application |
 
 ### Input file - vsi-app-input.yaml
-The input file defines the variable values for all the required Blueprint definition inputs. Review the file contents to observe the difference in formating for the yaml scalar and block scalar formats. 
+The input file defines the variable values for all the required Blueprint definition inputs. 
 
 | Name | Type | Value | Description |
 |------|------|------|----------------|
@@ -70,7 +70,7 @@ The input file defines the variable values for all the required Blueprint defini
 | ssh_public_key: | string | null  | SSH Key  |
 
 
-Sensitive input values like API keys and SSH keys should not be defined in the input file as this potentially could lead to a security exposure when the  file is saved in the git repo. To pass sensitive values to Schematics, they are passed as dynamic input variables when the Blueprint is created. Shell variable substution can be used to insert environment variables as input to Blueprint commands. 
+It is advised that sensitive input values like API keys and SSH keys should not be defined in the input file as this can lead to a security exposure if the file is saved in the public git repo. To pass sensitive values to Schematics, they are passed as dynamic input variables when the Blueprint is created. Shell variable substution can be used to insert environment variables as input to Blueprint commands. 
 
 The SSH key can be sourced and saved as the environment variable `user_ssh_key` using:
 ```
@@ -117,12 +117,18 @@ $ ibmcloud schematics blueprint install -id blueprint_id
 
 $ ibmcloud schematics blueprint job list -id blueprint_id
 
-$ ibmcloud schematics blueprint get -id blueprint_id -profile outputs
+$ ibmcloud schematics blueprint get -id blueprint_id -profile output
 
 $ ibmcloud schematics blueprint destroy -id blueprint_id
 
 $ ibmcloud schematics blueprint delete -id blueprint_id
 ```
+
+## Troubleshooting 
+See the [Schematics documentation](https://cloud.ibm.com/docs/schematics?topic=schematics-bp-create-fails&interface=cli) for troubleshooting information. 
+
+IBM Cloud resources are deployed by this example. Most observed errors are Terraform Apply errors when running `blueprint install` due to incorrect IAM permissions to create resources or existing/duplicate resources. Only one 'free/lite' LogDNA instance is allowed per account. 
+
 
 ## Next Steps
 
