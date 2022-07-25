@@ -17,10 +17,10 @@ settings:
     value: 1.0
 modules:
   - name: bp-vsi-resource-group
-    layer: RG
+    module_type: terraform
     source:
+      source_type: github
       git: 
-        source_type: github
         git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-ResourceGroup"
         git_branch: main
     inputs:
@@ -32,10 +32,10 @@ modules:
       - name: resource_group_name
       - name: resource_group_id
   - name: bp-vsi-cos-storage
-    layer: DB
+    module_type: terraform
     source:
+      source_type: github
       git:
-        source_type: github
         git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-Storage"
         git_branch: main
     inputs:
@@ -49,10 +49,10 @@ modules:
       - name: cos_id
       - name: cos_crn
   - name: bp-vsi-observablity
-    layer: OBS
+    module_type: terraform
     source:
+      source_type: github
       git:
-        source_type: github
         git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-Observability"
         git_branch: main
     inputs:
@@ -68,10 +68,10 @@ modules:
       - name: logdna_crn
       - name: logdna_id
   - name: bp-vsi-vpc-app
-    layer: Application
+    module_type: terraform
     source:
+      source_type: github
       git:
-        source_type: github
         git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-VPC-App"
         git_branch: main
     inputs:
