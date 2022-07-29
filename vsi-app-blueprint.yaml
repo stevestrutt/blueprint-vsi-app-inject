@@ -21,7 +21,7 @@ modules:
     source:
       source_type: github
       git: 
-        git_repo_url: "https://github.com/terraform-ibm-modules/terraform-ibm-resource-management/tree/main/modules/resource-group"
+        git_repo_url: "https://github.com/nven/tf-complex-vars/tree/master"
         git_branch: main
     inputs:
       - name: provision
