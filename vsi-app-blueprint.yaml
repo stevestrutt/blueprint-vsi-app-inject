@@ -41,37 +41,37 @@ modules:
     #       - name: provider_source
     #         value: IBM-Cloud/ibm
 
-  - name: tf_cloudless_sleepy_workitem1
-    module_type: terraform
-    layer: Sleepy
-    source:
-      source_type: github
-      git:
-        git_repo_url: "https://github.com/nven/tf-complex-vars/tree/master"
-        git_branch: "master"
-    tags: string
-    inputs:
-      - name: TF_VERSION
-        value: 0.13
-      - name: sample_var
-        value: test
-      - name: image_id
-        value: ami-image
-      - name: test_any_list
-        value: '["34", "mgm-grand", "madison-square-garden"]'
-        type: list(any)
-    settings:
-      - name: TF_VERSION
-        value: 0.13
-    injectors:
-      - tft_git_url: "https://github.com/Cloud-Schematics/tf-templates"
-        tft_name: "ibm"
-        injection_type: override
-        tft_parameters:
-          - name: provider_version
-            value: 1.38.2
-          - name: provider_source
-            value: IBM-Cloud/ibm  
+  # - name: tf_cloudless_sleepy_workitem1
+  #   module_type: terraform
+  #   layer: Sleepy
+  #   source:
+  #     source_type: github
+  #     git:
+  #       git_repo_url: "https://github.com/nven/tf-complex-vars/tree/master"
+  #       git_branch: "master"
+  #   tags: string
+  #   inputs:
+  #     - name: TF_VERSION
+  #       value: 0.13
+  #     - name: sample_var
+  #       value: test
+  #     - name: image_id
+  #       value: ami-image
+  #     - name: test_any_list
+  #       value: '["34", "mgm-grand", "madison-square-garden"]'
+  #       type: list(any)
+  #   settings:
+  #     - name: TF_VERSION
+  #       value: 0.13
+  #   injectors:
+  #     - tft_git_url: "https://github.com/Cloud-Schematics/tf-templates"
+  #       tft_name: "ibm"
+  #       injection_type: override
+  #       tft_parameters:
+  #         - name: provider_version
+  #           value: 1.38.2
+  #         - name: provider_source
+  #           value: IBM-Cloud/ibm  
   - name: bp-vsi-cos-storage
     module_type: terraform
     source:
