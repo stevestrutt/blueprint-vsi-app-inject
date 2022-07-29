@@ -21,7 +21,7 @@ modules:
     source:
       source_type: github
       git: 
-        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-ResourceGroup"
+        git_repo_url: "https://github.com/terraform-ibm-modules/terraform-ibm-resource-management/tree/main/modules/resource-group"
         git_branch: main
     inputs:
       - name: provision
@@ -31,6 +31,13 @@ modules:
     outputs:
       - name: resource_group_name
       - name: resource_group_id
+    injectors:
+      - tft_git_url: "https://github.com/Cloud-Schematics/tf-templates"
+        tft_name: "ibm"
+        injection_type: override
+        tft_parameters:
+          - name: provider_source
+            value: IBM-Cloud/ibm
   - name: bp-vsi-cos-storage
     module_type: terraform
     source:
