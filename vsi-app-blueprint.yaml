@@ -13,8 +13,8 @@ outputs:
   - name: schematics-app-url
     value: $module.bp-vsi-vpc-app.outputs.app_url
 settings:
-  # - name: TF_VERSION
-  #   value: 1.0
+  - name: TF_VERSION
+    value: 0.13
 modules:
   - name: bp-vsi-resource-group
     module_type: terraform
