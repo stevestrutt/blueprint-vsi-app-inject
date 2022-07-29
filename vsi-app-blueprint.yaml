@@ -31,13 +31,13 @@ modules:
     outputs:
       - name: resource_group_name
       - name: resource_group_id
-    injectors:
-      - tft_git_url: "https://github.com/Cloud-Schematics/tf-templates"
-        tft_name: "ibm"
-        injection_type: override
-        tft_parameters:
-          - name: provider_source
-            value: IBM-Cloud/ibm
+    # injectors:
+    #   - tft_git_url: "https://github.com/Cloud-Schematics/tf-templates"
+    #     tft_name: "ibm"
+    #     injection_type: override
+    #     tft_parameters:
+    #       - name: provider_source
+    #         value: IBM-Cloud/ibm
   - name: bp-vsi-cos-storage
     module_type: terraform
     source:
