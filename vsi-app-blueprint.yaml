@@ -89,25 +89,25 @@ modules:
     outputs:
       - name: cos_id
       - name: cos_crn
-  - name: bp-vsi-observablity
-    module_type: terraform
-    source:
-      source_type: github
-      git:
-        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-Observability"
-        git_branch: main
-    inputs:
-      - name: logdna_name
-        value: $blueprint.logdna_name
-      - name: logdna_region
-        value: $blueprint.region
-      - name: ic_api_key
-        value: $blueprint.api_key
-      - name: resource_group_id
-        value: $module.bp-vsi-resource-group.outputs.resource_group_id
-    outputs:
-      - name: logdna_crn
-      - name: logdna_id
+  # - name: bp-vsi-observablity
+  #   module_type: terraform
+  #   source:
+  #     source_type: github
+  #     git:
+  #       git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-Observability"
+  #       git_branch: main
+  #   inputs:
+  #     - name: logdna_name
+  #       value: $blueprint.logdna_name
+  #     - name: logdna_region
+  #       value: $blueprint.region
+  #     - name: ic_api_key
+  #       value: $blueprint.api_key
+  #     - name: resource_group_id
+  #       value: $module.bp-vsi-resource-group.outputs.resource_group_id
+  #   outputs:
+  #     - name: logdna_crn
+  #     - name: logdna_id
   # - name: bp-vsi-vpc-app
   #   module_type: terraform
   #   source:
