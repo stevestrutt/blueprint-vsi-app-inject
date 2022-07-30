@@ -72,23 +72,23 @@ modules:
             value: 1.38.2
           - name: provider_source
             value: IBM-Cloud/ibm  
-  - name: bp-vsi-cos-storage
-    module_type: terraform
-    source:
-      source_type: github
-      git:
-        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-Storage"
-        git_branch: main
-    inputs:
-      - name: cos_instance_name
-        value: $blueprint.cos_instance_name
-      - name: cos_single_site_loc
-        value: "ams03"
-      - name: resource_group_id
-        value: $module.bp-vsi-resource-group.outputs.resource_group_id
-    outputs:
-      - name: cos_id
-      - name: cos_crn
+  # - name: bp-vsi-cos-storage
+  #   module_type: terraform
+  #   source:
+  #     source_type: github
+  #     git:
+  #       git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-Storage"
+  #       git_branch: main
+  #   inputs:
+  #     - name: cos_instance_name
+  #       value: $blueprint.cos_instance_name
+  #     - name: cos_single_site_loc
+  #       value: "ams03"
+  #     - name: resource_group_id
+  #       value: $module.bp-vsi-resource-group.outputs.resource_group_id
+  #   outputs:
+  #     - name: cos_id
+  #     - name: cos_crn
   # - name: bp-vsi-observablity
   #   module_type: terraform
   #   source:
