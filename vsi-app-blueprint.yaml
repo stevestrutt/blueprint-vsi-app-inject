@@ -15,7 +15,7 @@ inputs:
 settings:
   - name: TF_VERSION
     value: 0.13
-# modules:
+modules:
 #   - name: bp-vsi-resource-group
 #     module_type: terraform
 #     source:
