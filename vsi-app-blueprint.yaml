@@ -15,22 +15,22 @@ inputs:
 settings:
   - name: TF_VERSION
     value: 0.13
-modules:
-  - name: bp-vsi-resource-group
-    module_type: terraform
-    source:
-      source_type: github
-      git: 
-        git_repo_url: "https://github.com/nven/tf-complex-vars/tree/master"
-        git_branch: main
-    inputs:
-      - name: provision
-        value: $blueprint.provision_rg
-      - name: name
-        value: $blueprint.resource_group_name
-    outputs:
-      - name: resource_group_name
-      - name: resource_group_id
+# modules:
+#   - name: bp-vsi-resource-group
+#     module_type: terraform
+#     source:
+#       source_type: github
+#       git: 
+#         git_repo_url: "https://github.com/nven/tf-complex-vars/tree/master"
+#         git_branch: main
+#     inputs:
+#       - name: provision
+#         value: $blueprint.provision_rg
+#       - name: name
+#         value: $blueprint.resource_group_name
+#     outputs:
+#       - name: resource_group_name
+#       - name: resource_group_id
     # injectors:
     #   - tft_git_url: "https://github.com/Cloud-Schematics/tf-templates"
     #     tft_name: "ibm"
