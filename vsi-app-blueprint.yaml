@@ -9,9 +9,9 @@ inputs:
   - name: logdna_name
   - name: vsi_name
   - name: ssh_public_key
-outputs:
-  - name: schematics-app-url
-    value: $module.bp-vsi-vpc-app.outputs.app_url
+# outputs:
+#   - name: schematics-app-url
+#     value: $module.bp-vsi-vpc-app.outputs.app_url
 settings:
   - name: TF_VERSION
     value: 0.13
