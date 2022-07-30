@@ -108,27 +108,27 @@ modules:
     outputs:
       - name: logdna_crn
       - name: logdna_id
-  - name: bp-vsi-vpc-app
-    module_type: terraform
-    source:
-      source_type: github
-      git:
-        git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-VPC-App"
-        git_branch: main
-    inputs:
-      - name: unique_id
-        value: $blueprint.vsi_name
-      - name: ibmcloud_api_key
-        value: $blueprint.api_key
-        secure: true
-      - name: vpc_region
-        value: $blueprint.region
-      - name: resource_group_id
-        value: $module.bp-vsi-resource-group.outputs.resource_group_id
-      - name: ssh_public_key
-        value: $blueprint.ssh_public_key
-        secure: true
-    outputs:
-      - name: app_url
+  # - name: bp-vsi-vpc-app
+  #   module_type: terraform
+  #   source:
+  #     source_type: github
+  #     git:
+  #       git_repo_url: "https://github.com/Cloud-Schematics/blueprint-example-modules/tree/main/IBM-VPC-App"
+  #       git_branch: main
+  #   inputs:
+  #     - name: unique_id
+  #       value: $blueprint.vsi_name
+  #     - name: ibmcloud_api_key
+  #       value: $blueprint.api_key
+  #       secure: true
+  #     - name: vpc_region
+  #       value: $blueprint.region
+  #     - name: resource_group_id
+  #       value: $module.bp-vsi-resource-group.outputs.resource_group_id
+  #     - name: ssh_public_key
+  #       value: $blueprint.ssh_public_key
+  #       secure: true
+  #   outputs:
+  #     - name: app_url
 
 
