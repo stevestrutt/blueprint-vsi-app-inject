@@ -1,4 +1,5 @@
 name: "bp-vsi-app-3"
+type: "blueprint"
 schema_version: "1.0.0"
 description: "Basic 2 component blueprint, RG & COS, no API key"
 inputs:
