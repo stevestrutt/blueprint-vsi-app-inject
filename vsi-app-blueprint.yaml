@@ -102,8 +102,6 @@ modules:
         value: $blueprint.logdna_name
       - name: logdna_region
         value: $blueprint.region
-      - name: ic_api_key
-        value: $blueprint.api_key
       - name: resource_group_id
         value: $module.bp-vsi-resource-group.outputs.resource_group_id
     outputs:
@@ -119,9 +117,6 @@ modules:
     inputs:
       - name: unique_id
         value: $blueprint.vsi_name
-      - name: ibmcloud_api_key
-        value: $blueprint.api_key
-        secure: true
       - name: vpc_region
         value: $blueprint.region
       - name: resource_group_id
